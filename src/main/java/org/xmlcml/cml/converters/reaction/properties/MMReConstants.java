@@ -7,8 +7,6 @@ import java.util.Set;
 
 import nu.xom.XPathContext;
 
-import org.xmlcml.cml.converters.rdf.rdf.RDFConstants;
-
 public class MMReConstants {
 
 	public final static String MICRO = "&#956;";
@@ -141,7 +139,7 @@ public class MMReConstants {
 	static {
 		UNIT_MAP.put("ml", Unit.MILLILITRE);
 		UNIT_MAP.put("mL", Unit.MILLILITRE);
-		UNIT_MAP.put("µL", Unit.MICROLITRE);
+		UNIT_MAP.put("ï¿½L", Unit.MICROLITRE);
 		UNIT_MAP.put(MICRO+"L", Unit.MICROLITRE);
 		UNIT_MAP.put(MICRO+"l", Unit.MICROLITRE);
 		
@@ -166,10 +164,6 @@ public class MMReConstants {
 	
 	public final static String MMRE_NS = "http://www.polymerinformatics.com/RecipeRepository.owl#";
 	public final static XPathContext MMRE_XPATH= new XPathContext("mmre", MMRE_NS);
-	public final static XPathContext RDF_MMRE_XPATH = new XPathContext("rdf", RDFConstants.RDF_NS);
-	static {
-		RDF_MMRE_XPATH.addNamespace("mmre", MMRE_NS);
-	};
 	
 
 }

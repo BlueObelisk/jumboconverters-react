@@ -9,18 +9,19 @@
         <version>0.3-SNAPSHOT</version>
     </parent>
 
-   <artifactId>jumbo-converters-reaction</artifactId>
-
-   <name>jumbo-converters-reaction</name>
+   <artifactId>jc-reaction</artifactId>
+   <name>jc-reaction</name>
 
    <dependencies>
+        <dependency>
+            <groupId>${jumbo.groupId}</groupId>
+            <artifactId>jumbo</artifactId>
+            <version>${jumbo.version}</version>
+        </dependency>
       <dependency>
          <groupId>cml</groupId>
-         <artifactId>jumbo-converters-core</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>cml</groupId>
-         <artifactId>jumbo-converters-rdf</artifactId>
+         <artifactId>jc-top-core</artifactId>
+         <version>${project.version}</version>
       </dependency>
       <dependency>
          <groupId>${cml.groupId}</groupId>
