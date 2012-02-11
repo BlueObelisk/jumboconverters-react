@@ -5,13 +5,20 @@
 
     <parent>
         <groupId>cml</groupId>
-        <artifactId>jumbo-converters</artifactId>
+        <artifactId>jumboconverters2-parent</artifactId>
         <version>0.3-SNAPSHOT</version>
     </parent>
 
    <artifactId>jc-reaction</artifactId>
    <name>jc-reaction</name>
 
+	<repositories>
+	  <repository>
+	    <id>ucc-repo</id>
+	    <url>http://maven.ch.cam.ac.uk/m2repo</url>
+	  </repository>
+	</repositories>
+	
    <dependencies>
         <dependency>
             <groupId>${jumbo.groupId}</groupId>
