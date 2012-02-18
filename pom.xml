@@ -11,6 +11,7 @@
 
    <artifactId>jc-reaction</artifactId>
    <name>jc-reaction</name>
+   <packaging>pom</packaging>
 
 	<repositories>
 	  <repository>
@@ -21,26 +22,22 @@
 	
    <dependencies>
         <dependency>
-            <groupId>${jumbo.groupId}</groupId>
-            <artifactId>jumbo</artifactId>
-            <version>${jumbo.version}</version>
+            <groupId>cml</groupId>
+            <artifactId>jc-top-core</artifactId>
+            <version>${project.version}</version>
         </dependency>
-      <dependency>
-         <groupId>cml</groupId>
-         <artifactId>jc-top-core</artifactId>
-         <version>${project.version}</version>
-      </dependency>
-      <dependency>
-         <groupId>${cml.groupId}</groupId>
-         <artifactId>jumbo-units</artifactId>
-         <version>${jumbounits.version}</version>
-      </dependency>
 
-      <dependency>
-         <groupId>junit</groupId>
-         <artifactId>junit</artifactId>
-         <scope>test</scope>
-      </dependency>
-   </dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>cml</groupId>
+			<artifactId>jc-top-testutils</artifactId>
+            <version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+    </dependencies>
 
 </project>

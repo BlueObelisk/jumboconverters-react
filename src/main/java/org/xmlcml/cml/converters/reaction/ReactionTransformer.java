@@ -1,11 +1,11 @@
 package org.xmlcml.cml.converters.reaction;
 
 import static org.xmlcml.cml.base.CMLConstants.CML_XPATH;
-
 import static org.xmlcml.euclid.EuclidConstants.S_COMMA;
 import static org.xmlcml.euclid.EuclidConstants.S_EMPTY;
 import static org.xmlcml.euclid.EuclidConstants.S_SPACE;
 
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +18,6 @@ import nu.xom.Nodes;
 import org.apache.log4j.Logger;
 import org.xmlcml.cml.base.CMLElement;
 import org.xmlcml.cml.base.CMLElements;
-import org.xmlcml.cml.converters.AbstractConverter;
 import org.xmlcml.cml.element.CMLConditionList;
 import org.xmlcml.cml.element.CMLLabel;
 import org.xmlcml.cml.element.CMLMolecule;
@@ -33,10 +32,6 @@ import org.xmlcml.cml.element.CMLReaction;
 import org.xmlcml.cml.element.CMLScalar;
 import org.xmlcml.cml.element.CMLSubstance;
 import org.xmlcml.cml.element.CMLSubstanceList;
-import org.xmlcml.cml.units.Pressure;
-import org.xmlcml.cml.units.Quantity;
-import org.xmlcml.cml.units.Temperature;
-import org.xmlcml.cml.units.Time;
 import org.xmlcml.euclid.EuclidRuntimeException;
 import org.xmlcml.euclid.Real2Range;
 /**
@@ -143,18 +138,18 @@ public class ReactionTransformer {
 				if (addSolvent(v)) {
 					continue;
 				}
-				if (addTime(v)) {
-					continue;
-				}
-				if (addPressure(v)) {
-					continue;
-				}
+//				if (addTime(v)) {
+//					continue;
+//				}
+//				if (addPressure(v)) {
+//					continue;
+//				}
 				if (addReagent(v)) {
 					continue;
 				}
-				if (addTemperature(v)) {
-					continue;
-				}
+//				if (addTemperature(v)) {
+//					continue;
+//				}
 				if (addYield(v)) {
 					continue;
 				}
@@ -237,77 +232,77 @@ public class ReactionTransformer {
 		return isSolv;
 	}
 
-	/**
-	 * @param v
-	 * @param parameter
-	 * @param scalar
-	 * @return time
-	 * @throws RuntimeException
-	 */
-	private boolean addTime(String v) {
-		boolean foundTime = false;
-		Quantity t = Time.getTime(v);
-		if (t != null) {
-			CMLParameter parameter = new CMLParameter();
-			CMLScalar scalar = new CMLScalar();
-			scalar.setValue(t.getValue());
-			scalar.setUnits("units:"+t.getUnits().getId());
-			parameter.setRole("duration");
-			parameter.addScalar(scalar);
-			ensureConditionList();
-			conditionList.appendChild(parameter);
-			foundTime = true;
-		}
-		return foundTime;
-	}
+//	/**
+//	 * @param v
+//	 * @param parameter
+//	 * @param scalar
+//	 * @return time
+//	 * @throws RuntimeException
+//	 */
+//	private boolean addTime(String v) {
+//		boolean foundTime = false;
+//		Quantity t = Time.getTime(v);
+//		if (t != null) {
+//			CMLParameter parameter = new CMLParameter();
+//			CMLScalar scalar = new CMLScalar();
+//			scalar.setValue(t.getValue());
+//			scalar.setUnits("units:"+t.getUnits().getId());
+//			parameter.setRole("duration");
+//			parameter.addScalar(scalar);
+//			ensureConditionList();
+//			conditionList.appendChild(parameter);
+//			foundTime = true;
+//		}
+//		return foundTime;
+//	}
 
-	/**
-	 * @param v
-	 * @param parameter
-	 * @param scalar
-	 * @return pressure
-	 * @throws RuntimeException
-	 */
-	private boolean addPressure(String v) {
-		boolean foundPressure = false;
-		Quantity p = Pressure.getPressure(v);
-		if (p != null) {
-			CMLParameter parameter = new CMLParameter();
-			CMLScalar scalar = new CMLScalar();
-			scalar.setValue(p.getValue());
-			scalar.setUnits("units:"+p.getUnits().getId());
-			parameter.setRole("pressure");
-			parameter.addScalar(scalar);
-			ensureConditionList();
-			conditionList.appendChild(parameter);
-			foundPressure = true;
-		}
-		return foundPressure;
-	}
+//	/**
+//	 * @param v
+//	 * @param parameter
+//	 * @param scalar
+//	 * @return pressure
+//	 * @throws RuntimeException
+//	 */
+//	private boolean addPressure(String v) {
+//		boolean foundPressure = false;
+//		Quantity p = Pressure.getPressure(v);
+//		if (p != null) {
+//			CMLParameter parameter = new CMLParameter();
+//			CMLScalar scalar = new CMLScalar();
+//			scalar.setValue(p.getValue());
+//			scalar.setUnits("units:"+p.getUnits().getId());
+//			parameter.setRole("pressure");
+//			parameter.addScalar(scalar);
+//			ensureConditionList();
+//			conditionList.appendChild(parameter);
+//			foundPressure = true;
+//		}
+//		return foundPressure;
+//	}
 
-	/**
-	 * @param v
-	 * @param parameter
-	 * @param scalar
-	 * @return temperature
-	 * @throws RuntimeException
-	 */
-	private boolean addTemperature(String v) {
-		boolean foundTemp = false;
-		Temperature t = Temperature.getTemperature(v);
-		if (t != null) {
-			CMLParameter parameter = new CMLParameter();
-			CMLScalar scalar = new CMLScalar();
-			scalar.setValue(t.getValue());
-			scalar.setUnits("units:"+t.getUnits().getId());
-			parameter.setRole("temperature");
-			parameter.addScalar(scalar);
-			ensureConditionList();
-			conditionList.appendChild(parameter);
-			foundTemp = true;
-		}
-		return foundTemp;
-	}
+//	/**
+//	 * @param v
+//	 * @param parameter
+//	 * @param scalar
+//	 * @return temperature
+//	 * @throws RuntimeException
+//	 */
+//	private boolean addTemperature(String v) {
+//		boolean foundTemp = false;
+//		Temperature t = Temperature.getTemperature(v);
+//		if (t != null) {
+//			CMLParameter parameter = new CMLParameter();
+//			CMLScalar scalar = new CMLScalar();
+//			scalar.setValue(t.getValue());
+//			scalar.setUnits("units:"+t.getUnits().getId());
+//			parameter.setRole("temperature");
+//			parameter.addScalar(scalar);
+//			ensureConditionList();
+//			conditionList.appendChild(parameter);
+//			foundTemp = true;
+//		}
+//		return foundTemp;
+//	}
 
 	/**
 	 * @param element
