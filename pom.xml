@@ -4,7 +4,7 @@
    <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cml</groupId>
+        <groupId>org.xml-cml.jc</groupId>
         <artifactId>jc-parent</artifactId>
         <version>0.3-SNAPSHOT</version>
     </parent>
@@ -20,9 +20,15 @@
 	  </repository>
 	</repositories>
 	
+    <modules>
+        <module>jc-reaction-core</module>
+        <module>jc-reaction-rxn</module>
+        <module>jc-reaction-all</module>
+    </modules>
+
    <dependencies>
         <dependency>
-            <groupId>cml</groupId>
+            <groupId>${jc.groupId}</groupId>
             <artifactId>jc-top-core</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -33,7 +39,7 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>cml</groupId>
+			<groupId>${jc.groupId}</groupId>
 			<artifactId>jc-top-testutils</artifactId>
             <version>${project.version}</version>
 			<scope>test</scope>
