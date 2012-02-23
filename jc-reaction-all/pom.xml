@@ -16,6 +16,16 @@
     <dependencies>
         <dependency>
             <groupId>${jc.groupId}</groupId>
+            <artifactId>jc-top-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${jc.groupId}</groupId>
+            <artifactId>jc-reaction-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${jc.groupId}</groupId>
             <artifactId>jc-reaction-rxn</artifactId>
             <version>${project.version}</version>
         </dependency>

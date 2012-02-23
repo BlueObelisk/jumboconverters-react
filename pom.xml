@@ -24,6 +24,7 @@
         <module>jc-reaction-core</module>
         <module>jc-reaction-rxn</module>
         <module>jc-reaction-all</module>
+        <module>jc-reaction-test</module>
     </modules>
 
    <dependencies>
