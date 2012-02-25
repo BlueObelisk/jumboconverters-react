@@ -24,16 +24,9 @@
         <module>jc-reaction-core</module>
         <module>jc-reaction-rxn</module>
         <module>jc-reaction-all</module>
-        <module>jc-reaction-test</module>
     </modules>
 
    <dependencies>
-        <dependency>
-            <groupId>${jc.groupId}</groupId>
-            <artifactId>jc-top-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
