@@ -22,6 +22,8 @@
 	
     <modules>
         <module>jc-reaction-core</module>
+        <module>jc-reaction-kegg</module>
+        <module>jc-reaction-rdf</module>
         <module>jc-reaction-rxn</module>
         <module>jc-reaction-all</module>
     </modules>

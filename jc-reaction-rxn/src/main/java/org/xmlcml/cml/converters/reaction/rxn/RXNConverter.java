@@ -1,7 +1,7 @@
 package org.xmlcml.cml.converters.reaction.rxn;
 
-
 import java.io.File;
+
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,9 +16,6 @@ import nu.xom.Document;
 
 import org.xmlcml.cml.base.CMLConstants;
 import org.xmlcml.cml.base.CMLSerializer;
-import org.xmlcml.cml.converters.AbstractConverter;
-import org.xmlcml.cml.converters.MimeType;
-import org.xmlcml.cml.converters.cml.CMLCommon;
 import org.xmlcml.cml.element.CMLAtom;
 import org.xmlcml.cml.element.CMLLink;
 import org.xmlcml.cml.element.CMLList;
@@ -38,9 +35,9 @@ import org.xmlcml.cml.tools.ReactionTool;
  * 
  * @author Administrator
  */
-public class RXN2CMLConverter extends AbstractConverter implements CMLConstants {
+public class RXNConverter implements CMLConstants {
 
-    final static Logger logger = Logger.getLogger(RXN2CMLConverter.class.getName());
+    final static Logger logger = Logger.getLogger(RXNConverter.class.getName());
 
     /**
      */
@@ -48,19 +45,29 @@ public class RXN2CMLConverter extends AbstractConverter implements CMLConstants 
 
     /** */
     public final static String FROM_MDL_MAPPING = "from MDL-RXN mapping";
-	public static final String REG_MESSAGE = "RXN to CML conversion";
 
     String id;
+
     int nProducts;
+
     int nReactants;
+
     CMLReaction reaction;
+
     CMLReactantList reactantList;
+
     CMLProductList productList;
+
     String line = null;
+
     String inDir = "";
+
     String outDir = "";
+
     String inSuffix = ".rxn";
+
     String outSuffix = ".cml";
+
     Document doc;
 
 	private ReactionTool reactionTool;
@@ -68,7 +75,7 @@ public class RXN2CMLConverter extends AbstractConverter implements CMLConstants 
     /**
      * Constructor for the RXNConverter object
      */
-    public RXN2CMLConverter() {
+    public RXNConverter() {
         this("");
     }
 
@@ -77,7 +84,7 @@ public class RXN2CMLConverter extends AbstractConverter implements CMLConstants 
      * 
      * @param reactionId
      */
-    public RXN2CMLConverter(String reactionId) {
+    public RXNConverter(String reactionId) {
         id = reactionId;
     }
 
@@ -135,7 +142,7 @@ public class RXN2CMLConverter extends AbstractConverter implements CMLConstants 
      * @exception IOException
      * @exception RuntimeException
      */
-    public void process() throws IOException {
+    public void process() throws IOException, RuntimeException {
         if (!inDir.equals("") && !outDir.equals("")) {
             String userDir = System.getProperties().getProperty("user.dir");
             // File inDirF = new File(userDir, inDir);
@@ -154,7 +161,7 @@ public class RXN2CMLConverter extends AbstractConverter implements CMLConstants 
                     String outfile = fileroot + outSuffix;
                     LineNumberReader lnr = new LineNumberReader(new FileReader(
                             files[i]));
-                    RXN2CMLConverter rxn = new RXN2CMLConverter(id);
+                    RXNConverter rxn = new RXNConverter(id);
                     doc = (Document) rxn.read(lnr);
                     logger.info("Writing To" + outfile);
                     FileOutputStream fos = new FileOutputStream(outfile);
@@ -495,7 +502,7 @@ public class RXN2CMLConverter extends AbstractConverter implements CMLConstants 
      * @exception RuntimeException
      */
     public static Document parse(File infile) throws IOException, RuntimeException {
-        return (Document) new RXN2CMLConverter().read(new LineNumberReader(
+        return (Document) new RXNConverter().read(new LineNumberReader(
                 new FileReader(infile)));
     }
 
@@ -549,7 +556,7 @@ public class RXN2CMLConverter extends AbstractConverter implements CMLConstants 
         Document doc = null;
         try {
             if (!indir.equals("") && !outdir.equals("")) {
-                RXN2CMLConverter rxn = new RXN2CMLConverter();
+                RXNConverter rxn = new RXNConverter();
                 rxn.setInDir(indir);
                 rxn.setOutDir(outdir);
                 rxn.process();
@@ -557,7 +564,7 @@ public class RXN2CMLConverter extends AbstractConverter implements CMLConstants 
             } else if (!infile.equals("")) {
                 LineNumberReader lnr = new LineNumberReader(new FileReader(
                         infile));
-                RXN2CMLConverter rxn = new RXN2CMLConverter(reactionId);
+                RXNConverter rxn = new RXNConverter(reactionId);
                 doc = (Document) rxn.read(lnr);
             }
 
@@ -582,18 +589,4 @@ public class RXN2CMLConverter extends AbstractConverter implements CMLConstants 
             cmle.printStackTrace();
         }
     }
-    
-	public MimeType getInputType() {
-		return RXNModule.RXN_TYPE;
-	}
-	
-	public MimeType getOutputType() {
-		return CMLCommon.CML_TYPE;
-	}
-	
-	public String getDescription() {
-		return REG_MESSAGE;
-	}
-
-
 }
